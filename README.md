@@ -58,4 +58,4 @@ O programa é dividido em 3 grandes módulos de aprendizado, seguidos pelo encer
 Encerramento / Carreira: Orientação e preparação para o mercado de trabalho.
 
 ## Cronograma detalhado
-- Veja o cronograma detalhado aqui
+- [Veja o cronograma detalhado aqui](https://github.com/RegiMaria/starQA-mcio/blob/main/cronograma.md)
