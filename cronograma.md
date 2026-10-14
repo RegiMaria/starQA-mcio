@@ -22,3 +22,8 @@
 | 17 | 09/Dez | Módulo 3 | Qualidade Contínua: QA dentro do CI/CD | ⬜ Pendente |
 | 18 | 14/Dez | Módulo 3 | 🚀 Demo Day: Apresentação do Projeto Integrador | ⬜ Pendente |
 | 19 | 16/Dez | Módulo 4 | 💼 Carreira em QA: do StartQA para o mercado | ⬜ Pendente |
+
+## Projeto Integrador
+
+Durante a formação, as participantes desenvolvem um Projeto Integrador Prático,
+consolidando o conhecimento adquirido ao longo dos módulos e apresentando suas soluções no Demo Day.
