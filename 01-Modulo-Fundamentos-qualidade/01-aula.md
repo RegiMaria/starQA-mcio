@@ -61,6 +61,43 @@ Aprendizados:
 
 **2. Resposta ao desafio**
 
+O desafio diz que **alguns** clientes não receberam desconto. Isso quer dizer que alguns receberam.
+
+Levantaria algumas hispóteses:
+- É um comportamento intermetente da arquitetura da aplicação.
+Em dia de pico, a palicação fica sobrecarrregada.
+
+- Se falhou pra alguns, a regra de negpocio pode esta sendo violada (ou contrato de dados)
+Onde *ACIMA DE* pode ser ambíguo.
+
+R$ 199,99 , R$ 200 , R$ 201
+
+**1. O que perguntaria**
+
+- Regras de negócio
+- Eliminação de ambiguidade
+- Critérios de aceite
+- Restrições
+- Como a regra se comporta em vários cenários
+
+**2. O que pode dar errado**
 
 
+**3. O que testar**
+- Teste de borda
+- Teste de cenário
+- Ponta a ponta
 
+**4. Quem pode ser immpactado**
+- Cliente final - Perda de confiança
+- Atendimento - sobreccarga
+- Desenvolvimento - tempo de urgência e emergência
+
+**5. O risco por negócio**
+- Custo: Abandono de carrinho
+- Custo: Corrigir falhas do negócio
+- Reputação: Reputação da marca / Valiação
+- Risco legal: Código de defesa do consumidor
+- Custo de indisponibilidade
+
+> A resolução envolve o entedimento de requisitos, cenários, arquitetura.
