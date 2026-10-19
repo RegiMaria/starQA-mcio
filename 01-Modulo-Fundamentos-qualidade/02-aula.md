@@ -68,53 +68,78 @@ O que acontece se o cliente mora em "Área sem número" ou "Zona Rural"?
 
 - Comunicação entre Microsserviços/APIs: A alteração do endereço no painel do cliente atualiza instantaneamente o serviço do WMS (Armazém/Estoque) e da Transportadora?
 
-Tratamento de Exceção: O que acontece se a API da transportadora estiver indisponível no momento em que o cliente salvar o novo endereço?
+- Tratamento de Exceção: O que acontece se a API da transportadora estiver indisponível no momento em que o cliente salvar o novo endereço?
 
-Concorrência: Se o cliente alterar o endereço exatamente no mesmo segundo em que o operador do armazém está gerando a etiqueta de envio, qual informação prevalece?
+- Concorrência: Se o cliente alterar o endereço exatamente no mesmo segundo em que o operador do armazém está gerando a etiqueta de envio, qual informação prevalece?
 
-4. Desenvolvimento (Colabora e antecipa)
-Testes Unitários: Os testes unitários do backend cobrem o cálculo do novo valor de frete e a alteração de status do pedido?
+> Olhar para a REGRAS DE NEGÓCIOS
 
-Máscaras e Sanitização de Entrada: O código previne caracteres especiais inválidos no campo de logradouro/complemento que possam quebrar a impressão da etiqueta na impressora térmica do armazém?
+**4. Desenvolvimento (Colabora e antecipa)**
 
-Tratamento de Strings/Tipos: O campo número aceita letras (ex: "100-A")? O CEP trata corretamente o zero à esquerda?
+- Testes Unitários: Os testes unitários do backend cobrem o cálculo do novo valor de frete e a alteração de status do pedido?
 
-5. Testes e QA (Protege a entrega)
-Análise de Valor Limite e Borda (Boundary Testing):
+- Máscaras e Sanitização de Entrada: O código previne caracteres especiais inválidos no campo de logradouro/complemento
+que possam quebrar a impressão da etiqueta na impressora térmica do armazém?
 
-Tentar alterar o endereço no exato status limite (ex: de "Em Separação" para "Enviado").
+- Tratamento de Strings/Tipos: O campo número aceita letras (ex: "100-A")? O CEP trata corretamente o zero à esquerda?
 
-Tentar inserir logradouros com limites mínimos e máximos de caracteres (ex: 2 caracteres vs. 250 caracteres).
+**5. Testes e QA (Protege a entrega)**
 
-Testes de Integração e Regressão:
+- Análise de Valor Limite e Borda (Boundary Testing):
 
-Alterar o endereço e verificar se a Nota Fiscal gerada posteriormente traz o novo endereço ou o antigo.
+- Tentar alterar o endereço no exato status limite (ex: de "Em Separação" para "Enviado").
 
-Verificar se o e-mail/WhatsApp de confirmação enviado ao cliente reflete o novo endereço.
+- Tentar inserir logradouros com limites mínimos e máximos de caracteres (ex: 2 caracteres vs. 250 caracteres).
 
-Testes de Segurança (Security Testing):
+- Testes de Integração e Regressão:
 
-Tentar alterar o endereço de entrega de um pedido de outro usuário alterando o ID da requisição na API (Vulnerabilidade IDOR).
+- Alterar o endereço e verificar se a Nota Fiscal gerada posteriormente traz o novo endereço ou o antigo.
 
-6. Deploy e Entrega (Validação do ambiente)
-Smoke Test em Staging/Production: Executar uma simulação end-to-end de troca de endereço no ambiente de homologação e produção antes da liberação geral.
+- Verificar se o e-mail/WhatsApp de confirmação enviado ao cliente reflete o novo endereço.
 
-Feature Flag/Toggle: A funcionalidade de alteração de endereço pode ser desativada rapidamente via painel se identificarmos um bug crítico após o deploy?
+- Testes de Segurança (Security Testing):
 
-7. Operações, Manutenção e Feedback (Aprende com dados)
-Métricas e Logs: O sistema registra logs auditáveis de quem alterou o endereço e quando (Cliente, Atendente do SAC ou Sistema)?
+- Tentar alterar o endereço de entrega de um pedido de outro usuário alterando o ID da requisição na API (Vulnerabilidade IDOR).
 
-Observabilidade: Existe alerta configurado se a taxa de falha na API de validação de CEP ou integração com a transportadora subir repentinamente?
+**6. Deploy e Entrega (Validação do ambiente)**
 
-Feedback do SAC: Quantos chamados foram abertos no suporte por erro de entrega após o cliente ter "alterado o endereço" no app? (Alimentar o backlog para melhoria contínua do processo).
+- Smoke Test em Staging/Production: Executar uma simulação end-to-end de troca de endereço no ambiente de homologação e produção antes da liberação geral.
+
+- Feature Flag/Toggle: A funcionalidade de alteração de endereço pode ser desativada rapidamente via painel se identificarmos um bug crítico após o deploy?
+
+**7. Operações, Manutenção e Feedback (Aprende com dados)**
+
+- Métricas e Logs: O sistema registra logs auditáveis de quem alterou o endereço e quando (Cliente, Atendente do SAC ou Sistema)?
+
+- Observabilidade: Existe alerta configurado se a taxa de falha na API de validação de CEP ou integração com a transportadora subir repentinamente?
+
+- Feedback do SAC: Quantos chamados foram abertos no suporte por erro de entrega após o cliente ter "alterado o endereço" no app? (Alimentar o backlog para melhoria contínua do processo).
 
 
 
 
-## O desafio
+## O desafio da aula
 
 <div align="center">
 <img src="https://github.com/user-attachments/assets/fc68346a-62fa-4e7a-a6a9-e138419e86e5" width="600" alt="AWS Logo"/>
 </div>
 
 ## Resolução
+
+Escrever resolução aqui
+
+
+## Desafio aula 19-10
+
+## O desafio
+
+<div align="center">
+<img src="https://github.com/user-attachments/assets/8b72f813-eb8f-40d7-b678-c52a7d3023ba" width="600" alt="AWS Logo"/>
+</div>
+
+## Resolução
+
+Escrever a resolução aqui
+
+
+
