@@ -126,7 +126,71 @@ que possam quebrar a impressão da etiqueta na impressora térmica do armazém?
 
 ## Resolução
 
-Escrever resolução aqui
+
+Para resolver esse desafio nos olhamos para o ciclo de vida do software
+<div align="center">
+<img src="https://github.com/user-attachments/assets/09cce6bf-59cc-437f-9615-de14360465ee"  width="600" alt="AWS Logo"/>
+</div>
+
+**1. "Quem realmente precisa dessa funcionalidade?"**
+
+Etapa: 1. Planejamento / Descoberta (Discovery)
+
+Por quê: Esta pergunta avalia o **propósito do produto e valor de negócio**.
+Ela **evita o desperdício de tempo e recursos** desenvolvendo algo que não atende
+às reais necessidades do usuário ou da empresa.
+
+**2. "E se o CEP não existir?"**
+
+Etapas: 2. Requisitos / Refinamento (3Refinement/Grooming) e 4. Desenvolvimento (Dev)
+
+Por quê: É a busca por cenários de exceção e fluxos alternativos antes da escrita do código.
+Fazer essa pergunta no refinamento remove a ambiguidade nos critérios de aceite; durante o dev, 
+garante que o código trate o erro (trata o erro de API/404) em vez de quebrar a aplicação.
+
+**3. "Como saberemos que todos os sistemas atualizaram?"**
+
+Etapa: 3. Análise, Design e Arquitetura / Testes de Integração
+
+Por quê: Questiona a interoperabilidade e sincronismo da arquitetura. 
+Em um sistema com microsserviços (ex: site, armazém e transportadora), 
+essa pergunta garante que haja rastreabilidade e confirmação (acknowledgement)
+entre as pontas.
+
+
+**4. "Qual mensagem aparece se falhar?"**
+
+Etapas: 2. Requisitos / Critérios de Aceite e 3. UX/UI Design
+
+Por quê: Foco na Usabilidade e Experiência do Usuário (UX). 
+A pergunta evita que o usuário final veja telas com erros genéricos ("Erro 500" ou NullPointer) 
+e garante que receba uma mensagem clara e instrucional caso a operação falhe.
+
+**5. "Como voltamos atrás se o deploy der problema?"**
+
+Etapa: 5. Deploy / Preparação para Release (DevOps & QA)
+
+Por quê: Foco no Plano de Rollback e Gestão de Risco. Antes de colocar qualquer alteração em produção,
+a equipe precisa garantir estratégias de reversão segura (como o uso de Feature Flags/Toggles ou rollback
+de versão sem perda de dados).
+
+
+**6. "Como saberemos em produção se aumentaram os erros?"**
+
+Etapa: 6. Operações, Manutenção e Observabilidade (Produção)
+
+Por quê: Foco em Observabilidade (Shift-Right). Questiona quais métricas, 
+dashboards (Grafana/Datadog) e alertas serão configurados para monitorar 
+a saúde da aplicação em tempo real e identificar anomalias antes que os 
+clientes comecem a reclamar.
+
+> Resumo do desafio:
+> *"Cada pergunta representa o papel ativo do QA atuando como guardião da qualidade em toda a jornada
+> do produto: do Entendimento do Valor (Planejamento), passando pela Prevenção de Bugs (Requisitos/Arquitetura),
+> até a Segurança da Entrega (Deploy) e a Observabilidade (Produção)."*
+
+---
+
 
 
 ## Desafio aula 19-10
