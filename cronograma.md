@@ -5,7 +5,7 @@
 | — | 05/Out | — | 🎉 Aula Inaugural | 🟩 Concluída   |
 | 1 | 07/Out | Módulo 1 |[ Qualidade de Software: muito além de encontrar bugs](https://github.com/RegiMaria/starQA-mcio/blob/main/01-Modulo-Fundamentos-qualidade/01-aula.md) | 🟩 Concluída |
 | 2 | 14/Out | Módulo 1 | [Do requisito à produção: QA no ciclo de desenvolvimento](https://github.com/RegiMaria/starQA-mcio/blob/main/01-Modulo-Fundamentos-qualidade/02-aula.md) | 🟩 Concluída |
-| 3 | 19/Out | Módulo 1 | Construindo certo a coisa certa | 🟩 Concluída |
+| 3 | 19/Out | Módulo 1 | [Construindo certo a coisa certa](https://github.com/RegiMaria/starQA-mcio/blob/main/01-Modulo-Fundamentos-qualidade/03-aula.md) | 🟩 Concluída |
 | 4 | 21/Out | Módulo 1 | Pensando como QA: risco e estratégia de testes | ⬜ Pendente |
 | 5 | 26/Out | Módulo 1 | Tipos e níveis de testes | ⬜ Pendente |
 | 6 | 28/Out | Módulo 1 | Além do funcional: qualidade também é performance, segurança e experiência | ⬜ Pendente |
