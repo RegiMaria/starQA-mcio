@@ -203,7 +203,102 @@ clientes comecem a reclamar.
 
 ## Resolução
 
-Escrever a resolução aqui
+Para a funcionalidade de aumento de limite de cartão de crédito no app bancário, as validações
+e perguntas essenciais em cada etapa são:
+
+**1. Descoberta (O que perguntar?)**
+
+**Análise de Risco e Negócio:**
+
+- O aumento é instantâneo (pré-aprovado) ou passa por uma análise de crédito em tempo real/assíncrona?
+
+- Há um valor limite máximo diário/mensal que o cliente pode solicitar pelo app?
+
+- Qual é o público-alvo (todos os clientes, apenas conta corrente, apenas clientes sem inadimplência)?
+
+- Se a análise for recusada, o app exibirá o motivo exato ou uma mensagem genérica?
+
+- Como a funcionalidade se comporta para cartões adicionais (dependente vs. titular)?
+
+**2. Requisitos (Quais regras precisam estar claras?)**
+
+**Critérios de Aceite e Regras de Borda:**
+
+- Regras de Intervalo: Qual o valor mínimo e máximo configurável na barra/campo de limite?
+
+ Regra de Elegibilidade: O cliente precisa ter tempo mínimo de conta ou estar sem faturas em atraso?
+
+- Validação de Segurança: O aumento exige confirmação por biometria facial, senha do cartão ou token/OTP?
+
+- Ajuste Provisório vs. Permanente: O cliente pode solicitar um aumento temporário (ex: para uma viagem) ou todo aumento é definitivo?
+
+- Notificação e Comprovante: O cliente deve receber e-mail, SMS ou push notification confirmando a alteração com o novo comprovante em PDF/tela?
 
 
+**3. Design / Dev (Quais riscos antecipar?)**
 
+**Fraude e Segurança (Security/IDOR):**
+
+- Risco de um atacante manipular a requisição da API e solicitar um limite maior do que o pré-aprovado (Parameter Tampering).
+
+- Risco de sequestro de conta (Account Takeover) para aumento de limite imediato seguido de fraude.
+
+**Integridade e Concorrência:**
+
+- Se o cliente fizer duas solicitações simultâneas (duplo clique no app ou requisições paralelas), o backend processará ambas? (Injeção de regra de Idempotência).
+
+**Interoperabilidade e Resiliência:**
+
+ O que acontece se o microsserviço de Análise de Crédito ou o Core Bancário estiver fora 
+ do ar no momento do clique? O app deve lidar com graceful degradation (tratamento amigável do erro sem travar o app).
+
+**4. Testes (Que cenários validar?)**
+
+**Análise de Valor Limite (Boundary Testing / BVA):**
+
+- Tentar solicitar R$ 0,00, R$ 0,01 a mais que o limite atual, exatamente o valor pré-aprovado máximo e R$ 0,01 acima do valor pré-aprovado.
+
+**Cenários de Exceção e Fluxos Alternativos:**
+
+- Cliente elegível com conta bloqueada ou fatura atrasada.
+
+- Solicitante sendo cartão adicional tentando alterar limite do titular.
+
+- Perda de conexão de internet durante o processamento do envio do formulário.
+
+**Testes de Segurança e Integração:**
+
+- Tentar alterar o ID da conta na chamada da API para aumentar o limite de outro usuário (vulnerabilidade IDOR).
+
+- Teste end-to-end: alterar o limite pelo app e realizar uma compra imediatamente no cartão (físico ou virtual)
+para validar se o novo limite já foi sincronizado com a adquirente/processadora.
+
+**5. Deploy (O que precisa estar pronto?)**
+
+**Controle e Reversibilidade:**
+
+- Feature Flag / Toggle: A funcionalidade deve estar protegida por uma chave de configuração para poder ser ativada/desativada instantaneamente sem precisar subir nova versão do app.
+
+- Rollback Plan: Estratégia clara de rollback caso o microsserviço no backend apresente inconsistências.
+
+**Validação de Ambiente:**
+
+- Execução de Smoke Tests em staging e produção controlada (Canary Release / Liberação gradativa para 5%, 10%, 50% dos usuários).
+
+- Scripts de migração de banco de dados e sincronização de contratos de API finalizados e homologados.
+
+**6. Produção (O que monitorar / Observabilidade?)**
+
+**Métricas de Negócio e Suporte:**
+
+- Taxa de sucesso vs. erro nas solicitações de aumento de limite.
+
+- Volume de chamados abertos no SAC/Chat relacionados a "Aumento de limite recusado" ou "Limite não atualizado".
+
+**Métricas Técnicas e Alertas:**
+
+- Latência/tempo de resposta da API de Análise de Crédito e do Core Bancário.
+
+- Taxa de erros HTTP 5xx (falha interna do servidor) e 4xx (falha do cliente ou validação) na rota de ajuste de limite.
+
+- Logs auditáveis para fins regulatórios (registrando quem alterou, qual era o limite anterior, o novo limite, IP e timestamp).
